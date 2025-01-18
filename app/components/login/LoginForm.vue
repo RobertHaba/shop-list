@@ -2,6 +2,8 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { userLoginSchema } from '~~/server/database/schema'
 
+const { $api } = useNuxtApp()
+
 const userStore = useUserStore()
 
 const { toastSuccess } = useToast()
@@ -13,7 +15,7 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit(async (values) => {
-  const response = await $fetch('/api/auth/login', {
+  const response = await $api('/auth/login', {
     method: 'POST',
     body: values,
   })
