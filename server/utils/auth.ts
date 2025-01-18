@@ -1,15 +1,15 @@
 import type { H3Event } from 'h3'
 import type { User } from './drizzle'
+import bcrypt from 'bcrypt'
 import { eq } from 'drizzle-orm'
-// import bcrypt from 'bcrypt'
-// import { eq } from 'drizzle-orm'
 
 // Logs the user in as the given user model
-async function login(event: H3Event<Request>, user: User) {
+async function login(event: H3Event<Request>, user: Omit<User, 'createdAt'>) {
   await replaceUserSession(event, {
     user: {
       id: user.id,
       name: user.name,
+      email: user.email,
     },
     loggedInAt: new Date(),
   })
@@ -31,34 +31,35 @@ async function getCurrentUser(event) {
   return result
 }
 
-// async function attempt(event: H3Event<Request>, email: string, password: string) {
-//   const db = await getDatabase()
+async function attempt(event: H3Event<Request>, email: string, password: string) {
+  const { users } = tables
 
-//   const foundUser = (
-//     await db
-//       .select({ id: users.id, name: users.name, email: users.email, password: users.password })
-//       .from(users)
-//       .where(eq(users.email, email))
-//       .limit(1)
-//   )?.[0]
+  validator.validateSchema(tables.userLoginSchema, { email, password })
 
-//   // compare the password hash
-//   if (!foundUser || !bcrypt.compareSync(password, foundUser.password)) {
-//     // return an error if the user is not found or the password doesn't match
-//     throw createError({
-//       statusCode: 401,
-//       statusMessage: 'Invalid email or password',
-//     })
-//   }
+  const foundUser = (
+    await useDrizzle()
+      .select({ id: users.id, name: users.name, email: users.email, password: users.password })
+      .from(users)
+      .where(eq(users.email, email))
+      .limit(1)
+  )?.[0]
 
-//   // log in as the selected user
-//   await login(event, foundUser)
+  // compare the password hash
+  if (!foundUser || !bcrypt.compareSync(password, foundUser.password)) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'error.server.invalidCredentials',
+    })
+  }
 
-//   return true
-// }
+  // log in as the selected user
+  await login(event, foundUser)
+
+  return true
+}
 
 export default {
   login,
   user: getCurrentUser,
-  // attempt,
+  attempt,
 }

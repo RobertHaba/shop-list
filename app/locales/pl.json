@@ -1,4 +1,9 @@
 {
+  "auth": {
+    "createAccount": "Utwórz swoje konto",
+    "noAccountYet": "Nie posiadasz konta?",
+    "youHaveAccountYet": "Masz już konto?"
+  },
   "fields": {
     "input": {
       "email": {
@@ -16,7 +21,9 @@
     }
   },
   "global": {
+    "appName": "Shoppini",
     "createAccount": "Utwórz konto",
+    "login": "Zaloguj się",
     "save": "Zapisz"
   }
 }

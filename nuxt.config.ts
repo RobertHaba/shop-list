@@ -8,6 +8,10 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  experimental: {
+    typedPages: true,
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',

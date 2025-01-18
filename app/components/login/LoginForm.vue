@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 import { toTypedSchema } from '@vee-validate/zod'
-import { userInsertSchema } from '~~/server/database/schema'
+import { userLoginSchema } from '~~/server/database/schema'
 
 const userStore = useUserStore()
 
-const formSchema = toTypedSchema(userInsertSchema)
+const formSchema = toTypedSchema(userLoginSchema)
 
-const { handleSubmit } = useForm({
+const { handleSubmit, errors } = useForm({
   validationSchema: formSchema,
 })
 
 const onSubmit = handleSubmit(async (values) => {
-  await $fetch('/api/auth/register', {
+  console.log(values)
+  const response = await $fetch('/api/auth/login', {
     method: 'POST',
     body: values,
   })
@@ -27,21 +28,21 @@ const onSubmit = handleSubmit(async (values) => {
 <template>
   <form class="flex flex-col gap-4" @submit="onSubmit">
     <SlGroupForm>
-      <SlInput name="name" />
-
       <SlInput name="email" />
 
       <SlInput name="password" type="password" />
     </SlGroupForm>
 
     <CnButton type="submit" class="w-full">
-      {{ $t('global.createAccount') }}
+      {{ $t('global.login') }}
     </CnButton>
 
+    {{ errors }}
+
     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-      {{ $t('auth.youHaveAccountYet') }}
-      <NuxtLink to="/login" class="font-medium text-primary">
-        {{ $t('global.login') }}
+      {{ $t('auth.noAccountYet') }}
+      <NuxtLink to="/register" class="font-medium text-primary">
+        {{ $t('global.createAccount') }}
       </NuxtLink>
     </p>
   </form>

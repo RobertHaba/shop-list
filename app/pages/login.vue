@@ -5,8 +5,8 @@
         {{ $t('global.appName') }}
       </NuxtLink>
 
-      <SlCard class="w-full sm:max-w-md" :label="$t('auth.createAccount')">
-        <RegisterForm />
+      <SlCard class="w-full sm:max-w-md" :label="$t('global.login')">
+        <LoginForm />
       </SlCard>
     </div>
   </section>

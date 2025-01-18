@@ -5,6 +5,8 @@ import { eq } from 'drizzle-orm'
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
+  validator.validateSchema(tables.userInsertSchema, body)
+
   await useDrizzle().insert(tables.users).values({
     name: body.name,
     email: body.email,

@@ -23,7 +23,7 @@ const { resolvedLabel, resolvedPlaceholder } = generateFieldTextAttrs(props)
       <CnFormLabel>{{ resolvedLabel }}</CnFormLabel>
 
       <CnFormControl>
-        <CnInput type="text" :placeholder="resolvedPlaceholder" v-bind="componentField" />
+        <CnInput :type :placeholder="resolvedPlaceholder" v-bind="componentField" />
       </CnFormControl>
 
       <CnFormDescription>
