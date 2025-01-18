@@ -4,6 +4,8 @@ import { userLoginSchema } from '~~/server/database/schema'
 
 const userStore = useUserStore()
 
+const { toastSuccess } = useToast()
+
 const formSchema = toTypedSchema(userLoginSchema)
 
 const { handleSubmit } = useForm({
@@ -25,6 +27,12 @@ const onSubmit = handleSubmit(async (values) => {
 </script>
 
 <template>
+  <button
+    variant="outline" @click="() => toastSuccess({ message: 'Event added to calendar' })"
+  >
+    Add to calendar
+  </button>
+
   <form class="flex flex-col gap-4" @submit="onSubmit">
     <SlGroupForm>
       <SlInput name="email" />
