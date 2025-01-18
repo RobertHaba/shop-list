@@ -16,10 +16,19 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-auth-utils',
     '@vee-validate/nuxt',
+    'nuxt-lodash',
+    '@pinia/nuxt',
   ],
 
   runtimeConfig: {
     databaseUrl: process.env.DATABASE_URL,
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL,
+    },
+  },
+
+  pinia: {
+    storesDirs: ['./app/stores/**'],
   },
 
   // Components
@@ -42,10 +51,6 @@ export default defineNuxtConfig({
     },
   ],
 
-  alias: {
-    '@app': './app',
-  },
-
   shadcn: {
     prefix: 'Cn',
     componentDir: './app/components/ui/cn',
@@ -60,6 +65,13 @@ export default defineNuxtConfig({
   },
 
   // DX
+  alias: {
+    '@app': './app',
+  },
+
+  lodash: {
+    prefix: 'useLodash',
+  },
 
   eslint: {
     config: {

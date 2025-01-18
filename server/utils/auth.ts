@@ -1,5 +1,6 @@
 import type { H3Event } from 'h3'
 import type { User } from './drizzle'
+import { eq } from 'drizzle-orm'
 // import bcrypt from 'bcrypt'
 // import { eq } from 'drizzle-orm'
 
@@ -14,22 +15,21 @@ async function login(event: H3Event<Request>, user: User) {
   })
 }
 
-// async function getCurrentUser(event) {
-//   const session = await getUserSession(event)
+async function getCurrentUser(event) {
+  const session = await getUserSession(event)
 
-//   // return null if there's no user
-//   if (!session.user) {
-//     return null
-//   }
+  // return null if there's no user
+  if (!session.user) {
+    return null
+  }
 
-//   const db = await getDatabase()
-//   // we're getting the whole user object by default for convenience, but always remove the password
-//   const result = (await db.select().from(users).where(eq(users.id, session.user.id)).limit(1))?.[0]
+  // we're getting the whole user object by default for convenience, but always remove the password
+  const result = (await useDrizzle().select().from(tables.users).where(eq(tables.users.id, session.user.id)).limit(1))?.[0]
 
-//   delete result.password
+  delete result.password
 
-//   return result
-// }
+  return result
+}
 
 // async function attempt(event: H3Event<Request>, email: string, password: string) {
 //   const db = await getDatabase()
@@ -59,6 +59,6 @@ async function login(event: H3Event<Request>, user: User) {
 
 export default {
   login,
-  // user: getCurrentUser,
+  user: getCurrentUser,
   // attempt,
 }

@@ -1,5 +1,22 @@
 {
+  "fields": {
+    "input": {
+      "email": {
+        "label": "Email",
+        "placeholder": "np. {'imie@nazwisko.pl'}"
+      },
+      "name": {
+        "label": "Imię",
+        "placeholder": "np. Jan"
+      },
+      "password": {
+        "label": "Hasło",
+        "placeholder": "******"
+      }
+    }
+  },
   "global": {
+    "createAccount": "Utwórz konto",
     "save": "Zapisz"
   }
 }

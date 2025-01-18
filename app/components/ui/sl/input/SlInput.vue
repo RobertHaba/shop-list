@@ -1,13 +1,36 @@
+<script setup lang="ts">
+interface SlInputProps {
+  type?: string
+  name: string
+  textKey?: string
+  label?: string
+  placeholder?: string
+  hideLabel?: boolean
+  required?: boolean
+  description?: string
+}
+
+const props = defineProps<SlInputProps>()
+
+const { generateFieldTextAttrs } = useFormFieldAttrs()
+
+const { resolvedLabel, resolvedPlaceholder } = generateFieldTextAttrs(props)
+</script>
+
 <template>
-  <div class="space-y-2">
-    <CnLabel for="input-03">
-      Input with helper text
-    </CnLabel>
+  <CnFormField v-slot="{ componentField }" :name>
+    <CnFormItem>
+      <CnFormLabel>{{ resolvedLabel }}</CnFormLabel>
 
-    <CnInput id="input-03" placeholder="Email" type="email" />
+      <CnFormControl>
+        <CnInput type="text" :placeholder="resolvedPlaceholder" v-bind="componentField" />
+      </CnFormControl>
 
-    <p class="text-xs text-muted-foreground" role="region" aria-live="polite">
-      We won't share your email with anyone
-    </p>
-  </div>
+      <CnFormDescription>
+        {{ description }}
+      </CnFormDescription>
+
+      <CnFormMessage />
+    </CnFormItem>
+  </CnFormField>
 </template>
