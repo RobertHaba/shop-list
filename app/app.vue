@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CnButton>asd</CnButton>
+    <CnButton>{{ $t('global.save') }}</CnButton>
 
     <CnBadge>asd</CnBadge>
   </div>

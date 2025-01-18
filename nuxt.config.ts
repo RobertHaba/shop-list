@@ -8,7 +8,11 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxtjs/color-mode', '@nuxt/eslint'],
+  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxtjs/color-mode', '@nuxt/eslint', '@nuxtjs/i18n', 'nuxt-auth-utils'],
+
+  runtimeConfig: {
+    databaseUrl: process.env.DATABASE_URL,
+  },
 
   // Components
 
@@ -30,12 +34,29 @@ export default defineNuxtConfig({
     componentDir: './app/components/ui',
   },
 
+  // SERVER
+
+  nitro: {
+    experimental: {
+      tasks: true,
+    },
+  },
+
   // DX
 
   eslint: {
     config: {
       standalone: false,
     },
+  },
+
+  i18n: {
+    lazy: true,
+    defaultLocale: 'pl',
+    restructureDir: 'app',
+    locales: [
+      { code: 'pl', file: 'pl.json' },
+    ],
   },
 
   typescript: {
