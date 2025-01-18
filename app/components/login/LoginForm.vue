@@ -6,12 +6,11 @@ const userStore = useUserStore()
 
 const formSchema = toTypedSchema(userLoginSchema)
 
-const { handleSubmit, errors } = useForm({
+const { handleSubmit } = useForm({
   validationSchema: formSchema,
 })
 
 const onSubmit = handleSubmit(async (values) => {
-  console.log(values)
   const response = await $fetch('/api/auth/login', {
     method: 'POST',
     body: values,
@@ -36,8 +35,6 @@ const onSubmit = handleSubmit(async (values) => {
     <CnButton type="submit" class="w-full">
       {{ $t('global.login') }}
     </CnButton>
-
-    {{ errors }}
 
     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
       {{ $t('auth.noAccountYet') }}
