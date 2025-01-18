@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 
   components: [
     {
-      path: '~/components/ui',
+      path: '~/components/ui/cn',
       pathPrefix: false,
       prefix: 'cn',
       extensions: ['vue'],
@@ -31,7 +31,6 @@ export default defineNuxtConfig({
 
   shadcn: {
     prefix: 'Cn',
-    componentDir: './app/components/ui',
   },
 
   // SERVER
