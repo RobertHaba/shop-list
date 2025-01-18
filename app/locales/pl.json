@@ -4,6 +4,12 @@
     "noAccountYet": "Nie posiadasz konta?",
     "youHaveAccountYet": "Masz już konto?"
   },
+
+  "error": {
+    "server": {
+      "invalidCredentials": "Nieprawidłowe dane logowania"
+    }
+  },
   "fields": {
     "input": {
       "email": {
