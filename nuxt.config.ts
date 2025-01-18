@@ -8,7 +8,15 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxtjs/color-mode', '@nuxt/eslint', '@nuxtjs/i18n', 'nuxt-auth-utils'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@nuxtjs/color-mode',
+    '@nuxt/eslint',
+    '@nuxtjs/i18n',
+    'nuxt-auth-utils',
+    '@vee-validate/nuxt',
+  ],
 
   runtimeConfig: {
     databaseUrl: process.env.DATABASE_URL,
@@ -23,6 +31,15 @@ export default defineNuxtConfig({
       prefix: 'cn',
       extensions: ['vue'],
     },
+    {
+      path: '~/components/ui/sl',
+      pathPrefix: false,
+      prefix: 'sl',
+    },
+    {
+      path: '~/components',
+      extensions: ['.vue'],
+    },
   ],
 
   alias: {
@@ -31,6 +48,7 @@ export default defineNuxtConfig({
 
   shadcn: {
     prefix: 'Cn',
+    componentDir: './app/components/ui/cn',
   },
 
   // SERVER
