@@ -40,7 +40,7 @@ async function attempt(event: H3Event<Request>, email: string, password: string)
     await useDrizzle()
       .select({ id: users.id, name: users.name, email: users.email, password: users.password })
       .from(users)
-      .where(eq(users.email, email))
+      .where(eq(sqliteExtender.lower(users.email), email.toLowerCase()))
       .limit(1)
   )?.[0]
 
