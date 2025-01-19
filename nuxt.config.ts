@@ -1,15 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-01-19',
 
   devtools: { enabled: true },
-
-  devServer: {
-    https: {
-      key: 'localhost-key.pem',
-      cert: 'localhost.pem',
-    },
-  },
 
   future: {
     compatibilityVersion: 4,
@@ -29,6 +22,7 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     'nuxt-lodash',
     '@pinia/nuxt',
+    '@nuxt/icon',
   ],
 
   runtimeConfig: {
