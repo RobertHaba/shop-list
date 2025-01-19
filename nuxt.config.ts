@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     'nuxt-lodash',
     '@pinia/nuxt',
     '@nuxt/icon',
+    '@formkit/auto-animate',
   ],
 
   runtimeConfig: {
