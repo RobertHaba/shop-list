@@ -4,6 +4,13 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  devServer: {
+    https: {
+      key: 'localhost-key.pem',
+      cert: 'localhost.pem',
+    },
+  },
+
   future: {
     compatibilityVersion: 4,
   },
@@ -58,6 +65,11 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: 'Cn',
     componentDir: './app/components/ui/cn',
+  },
+
+  colorMode: {
+    preference: 'dark',
+    classSuffix: '',
   },
 
   // SERVER
