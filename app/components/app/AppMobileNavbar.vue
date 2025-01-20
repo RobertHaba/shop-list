@@ -3,7 +3,7 @@ const { t } = useI18n()
 
 const menuItemList = [
   { to: '/app', icon: 'tabler:home', title: t('app.menu.home') },
-  { to: '/app/list/add', icon: 'tabler:square-rounded-plus', title: t('app.menu.newList') },
+  { to: '/app/products/new', icon: 'tabler:square-rounded-plus', title: t('app.menu.newList') },
   { to: '/app/list/favorites', icon: 'tabler:heart', title: t('app.menu.favorites') },
 ]
 </script>
