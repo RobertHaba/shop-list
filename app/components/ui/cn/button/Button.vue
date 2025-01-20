@@ -4,13 +4,13 @@ import { cn } from '@/lib/utils'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { type ButtonVariants, buttonVariants } from '.'
 
-interface Props extends PrimitiveProps {
+export interface CnButtonProps extends PrimitiveProps {
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<CnButtonProps>(), {
   as: 'button',
 })
 </script>
