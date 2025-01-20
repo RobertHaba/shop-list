@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/icon',
     '@formkit/auto-animate',
+    '@vueuse/nuxt',
   ],
 
   runtimeConfig: {
