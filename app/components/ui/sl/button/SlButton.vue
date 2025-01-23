@@ -3,7 +3,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { CnButtonProps } from '~/components/ui/cn/button/Button.vue'
 
 interface Props extends CnButtonProps {
-  to: RouteLocationRaw
+  to?: RouteLocationRaw
 }
 
 const { to } = defineProps<Props>()
