@@ -3,7 +3,7 @@ const userStore = useUserStore()
 </script>
 
 <template>
-  <div class="h-10 flex items-center justify-between">
+  <div class="h-12 flex items-center justify-between">
     <div class="text-sm flex gap-1 text-muted-foreground">
       <span>{{ $t('app.dashboard.welcome') }}</span>
 
