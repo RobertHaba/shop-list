@@ -92,9 +92,8 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    lazy: true,
+    vueI18n: './i18n/i18n.config.ts',
     defaultLocale: 'pl',
-    restructureDir: 'app',
     locales: [
       { code: 'pl', file: 'pl.json' },
     ],

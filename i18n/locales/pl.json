@@ -1,10 +1,28 @@
 {
+  "app": {
+    "dashboard": {
+      "welcome": "Hej"
+    },
+    "menu": {
+      "favorites": "Ulubione",
+      "home": "Home",
+      "list": {
+        "add": "Dodaj"
+      },
+      "newList": "Nowa lista"
+    },
+    "productList": {
+      "newList": "Nowa lista"
+    },
+    "shoppingList": {
+      "completeListAndBuyProducts": "Dokończ listę i zakup {nProducts}"
+    }
+  },
   "auth": {
     "createAccount": "Utwórz swoje konto",
     "noAccountYet": "Nie posiadasz konta?",
     "youHaveAccountYet": "Masz już konto?"
   },
-
   "error": {
     "server": {
       "invalidCredentials": "Nieprawidłowe dane logowania"
@@ -27,9 +45,11 @@
     }
   },
   "global": {
+    "add": "Dodaj",
     "appName": "Shoppini",
     "createAccount": "Utwórz konto",
     "login": "Zaloguj się",
+    "nProducts": "{n} produktów | {n} produkt | {n} produkty | {n} produktów",
     "save": "Zapisz"
   }
 }
