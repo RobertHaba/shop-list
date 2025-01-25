@@ -15,7 +15,7 @@
       "newList": "Nowa lista"
     },
     "shoppingList": {
-      "completeListAndBuyProducts": "Dokończ listę i zakup {nProducts}"
+      "completeListAndBuyProducts": "Dokończ listę i zakup {nProducts}."
     }
   },
   "auth": {
