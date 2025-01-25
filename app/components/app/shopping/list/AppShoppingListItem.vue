@@ -30,14 +30,12 @@ function useStats() {
       {{ name }}
     </h3>
 
-    <div class="flex flex-col gap-2">
-      <div class="flex gap-2 items-center">
-        <CnProgress :model-value="completedPercent" />
+    <div class="flex gap-2 items-center">
+      <CnProgress :model-value="completedPercent" />
 
-        <span class="text-xs">{{ completedProductCount }}/{{ productCount }}</span>
-      </div>
-
-      <SlTextHint v-if="totalToBuy" :text="$t('app.shoppingList.completeListAndBuyProducts', { nProducts: $t('global.nProducts', totalToBuy) })" />
+      <span class="text-xs">{{ completedProductCount }}/{{ productCount }}</span>
     </div>
+
+    <SlTextHint v-if="totalToBuy" :text="$t('app.shoppingList.completeListAndBuyProducts', { nProducts: $t('global.nProducts', totalToBuy) })" />
   </NuxtLink>
 </template>
