@@ -1,11 +1,8 @@
 <script lang="ts" setup>
+type Item = ApiResponse<'/api/shopping-lists', 'get'>['data'][0]
+
 interface Props {
-  name: string
-  id: number
-  createdAt: string | null
-  userId: number
-  productCount: number
-  completedProductCount: number
+  item: Item
 }
 
 const props = defineProps<Props>()
@@ -13,9 +10,9 @@ const props = defineProps<Props>()
 const { completedPercent, totalToBuy } = useStats()
 
 function useStats() {
-  const completedPercent = computed(() => props.productCount > 1 ? (props.completedProductCount / props.productCount) * 100 : 0)
+  const completedPercent = computed(() => props.item.itemCount > 1 ? (props.item.completedItemCount / props.item.itemCount) * 100 : 0)
 
-  const totalToBuy = computed(() => props.productCount - props.completedProductCount)
+  const totalToBuy = computed(() => props.item.itemCount - props.item.completedItemCount)
 
   return {
     completedPercent,
@@ -25,15 +22,15 @@ function useStats() {
 </script>
 
 <template>
-  <NuxtLink :to="`/app/products/${id}`" class="flex flex-col justify-between gap-2 p-4 bg-card rounded-lg">
+  <NuxtLink :to="`/app/products/${item.id}`" class="flex flex-col justify-between gap-2 p-4 bg-card rounded-lg">
     <h3 class="font-semibold">
-      {{ name }}
+      {{ item.name }}
     </h3>
 
     <div class="flex gap-2 items-center">
       <CnProgress :model-value="completedPercent" />
 
-      <span class="text-xs">{{ completedProductCount }}/{{ productCount }}</span>
+      <span class="text-xs">{{ item.completedItemCount }}/{{ item.itemCount }}</span>
     </div>
 
     <SlTextHint v-if="totalToBuy" :text="$t('app.shoppingList.completeListAndBuyProducts', { nProducts: $t('global.nProducts', totalToBuy) })" />
