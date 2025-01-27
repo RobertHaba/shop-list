@@ -1,23 +1,24 @@
 <script lang="ts" setup>
+import type { RouteLocationRaw } from 'vue-router'
+
 interface Props {
   title?: string
+  backTo: RouteLocationRaw
 }
 
 defineProps<Props>()
 </script>
 
 <template>
-  <header class="flex gap-2 h-10 items-center">
-    <CnButton size="icon" variant="ghost" @click="$router.back()">
+  <header class="flex shrink-0 gap-2 h-12 items-center">
+    <SlButton size="icon" variant="ghost" :to="backTo">
       <SlIcon class="size-8 text-muted-foreground" name="tabler:arrow-narrow-left" />
-    </CnButton>
+    </SlButton>
 
-    <h1 class="text-lg font-semibold">
-      {{ title }}
-    </h1>
+    <slot>
+      <h1 class="text-lg font-semibold">
+        {{ title }}
+      </h1>
+    </slot>
   </header>
 </template>
-
-<style>
-
-</style>
