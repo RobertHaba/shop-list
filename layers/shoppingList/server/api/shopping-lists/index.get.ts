@@ -9,8 +9,8 @@ export default defineEventHandler(async (event) => {
     .select(
       {
         ...getTableColumns(shoppingLists),
-        productCount: sql<number>`(SELECT COUNT(*) FROM shopping_list_items WHERE shopping_list_items.list_id = shopping_lists.id)`,
-        completedProductCount: sql<number>`(SELECT COUNT(*) FROM shopping_list_items WHERE shopping_list_items.list_id = shopping_lists.id AND shopping_list_items.is_completed = 1)`,
+        productCount: sql<number>`(SELECT COUNT(*) FROM shopping_list_items WHERE shopping_list_items.shopping_list_id = shopping_lists.id)`,
+        completedProductCount: sql<number>`(SELECT COUNT(*) FROM shopping_list_items WHERE shopping_list_items.list_id = shopping_lists.id AND shopping_list_items.is_purchased = 1)`,
       },
     )
     .from(shoppingLists)

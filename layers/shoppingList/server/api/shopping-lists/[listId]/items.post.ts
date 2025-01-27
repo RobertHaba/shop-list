@@ -29,13 +29,13 @@ export default defineEventHandler(async (event) => {
   }
 
   const [insertedItem] = await useDrizzle().insert(shoppingListItems).values({
-    listId: numericListId,
+    shoppingListId: numericListId,
     name: body.name,
     quantity: body.quantity,
     userId: user.id,
   }).returning({
     id: shoppingListItems.id,
-    listId: shoppingListItems.listId,
+    listId: shoppingListItems.shoppingListId,
     name: shoppingListItems.name,
     quantity: shoppingListItems.quantity,
     createdAt: shoppingListItems.createdAt,

@@ -15,8 +15,5 @@ export default defineEventHandler(async (event) => {
     name: tables.shoppingLists.name,
   })
 
-  return {
-    success: true,
-    data: inserted[0],
-  }
+  return inserted[0]
 })
