@@ -9,8 +9,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:pull": "drizzle-kit pull",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
@@ -29,6 +31,7 @@
     "radix-vue": "^1.9.12",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
+    "vaul-vue": "^0.2.0",
     "vee-validate": "^4.15.0",
     "vue": "3.5.13",
     "vue-router": "4.5.0",
@@ -52,7 +55,9 @@
     "eslint": "^9.18.0",
     "eslint-plugin-format": "1.0.1",
     "nuxt-auth-utils": "0.5.7",
+    "nuxt-layers-utils": "^0.3.0",
     "nuxt-lodash": "^2.5.3",
+    "nuxt-typed-router": "^3.7.3",
     "shadcn-nuxt": "^0.10.4",
     "typescript": "^5.7.3"
   }
