@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+import { helpers } from '@typed-router'
+
 const { t } = useI18n()
 
 const menuItemList = [
-  { to: '/app', icon: 'tabler:home', title: t('app.menu.home') },
-  { to: '/app/products/new', icon: 'tabler:square-rounded-plus', title: t('app.menu.newList') },
-  { to: '/app/list/favorites', icon: 'tabler:heart', title: t('app.menu.favorites') },
+  { to: helpers.path('/app'), icon: 'tabler:home', title: t('app.menu.home') },
+  { to: helpers.path('/app/shopping-list/new'), icon: 'tabler:square-rounded-plus', title: t('app.menu.newList') },
+  // { to: '/app/list/favorites', icon: 'tabler:heart', title: t('app.menu.favorites') },
 ]
 </script>
 

@@ -1,6 +1,8 @@
-<script lang="ts" setup>
+<script lang="ts" setup generic="T extends RoutesNamesList, P extends string">
+import type { NuxtRoute, RoutesNamesList } from '@typed-router'
+
 interface Props {
-  to: string
+  to: NuxtRoute<T, P>
   icon: string
   title: string
 }
