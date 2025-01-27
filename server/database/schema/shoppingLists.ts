@@ -28,5 +28,6 @@ export const shoppingListInsertSchema = createInsertSchema(
 ).omit({
   id: true,
   userId: true,
+  updatedAt: true,
   createdAt: true,
 })
