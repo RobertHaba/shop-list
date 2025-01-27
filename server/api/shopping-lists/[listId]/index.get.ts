@@ -8,6 +8,10 @@ export default defineEventHandler(async (event) => {
   const { shoppingLists } = tables
 
   const list = await useDrizzle().query.shoppingLists.findFirst({
+    columns: {
+      id: true,
+      name: true,
+    },
     where: and(eq(shoppingLists.id, listId), eq(shoppingLists.userId, user.id)),
     with: {
       products: true,
