@@ -6,14 +6,24 @@ definePageMeta({
 const route = useRoute()
 const { t } = useI18n()
 
-const isNewList = computed(() => route.params.id === 'new')
+const shoppingListStore = useShoppingListStore()
 
-const title = computed(() => isNewList.value ? t('app.productList.newList') : 'BCK')
+shoppingListStore.getList(route.params.id as string)
+
+const { title } = useListData()
+
+function useListData() {
+  const isNewList = computed(() => route.params.id === 'new')
+
+  const title = computed(() => isNewList.value ? t('app.productList.newList') : shoppingListStore.list?.name)
+
+  return { title }
+}
 </script>
 
 <template>
   <NuxtLayout name="app-container">
-    <AppMobileHeader :title />
+    <AppMobileHeader :title back-to="/app" />
 
     <AppProductList class="h-full" />
 
