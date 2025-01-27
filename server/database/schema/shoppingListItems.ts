@@ -1,29 +1,41 @@
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
+import { relations } from 'drizzle-orm'
+import { integer, sqliteTable } from 'drizzle-orm/sqlite-core'
 import { createInsertSchema, createUpdateSchema } from 'drizzle-zod'
-import { shoppingLists, users } from '.'
+import { products, shoppingLists } from '.'
 
 export const shoppingListItems = sqliteTable('shopping_list_items', {
   id: integer().primaryKey({ autoIncrement: true }),
-  listId: integer('list_id').notNull().references(() => shoppingLists.id, { onDelete: 'cascade' }),
-  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  name: text().notNull(),
+  shoppingListId: integer('shopping_list_id').notNull().references(() => shoppingLists.id, { onDelete: 'cascade' }),
+  productId: integer('product_id').notNull().references(() => products.id),
   quantity: integer().notNull().default(1),
-  isCompleted: integer('is_completed', { mode: 'boolean' }).notNull().default(false),
+  isPurchased: integer('is_purchased', { mode: 'boolean' }).notNull().default(false),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 })
+
+export const shoppingListItemsRelations = relations(shoppingListItems, ({ one }) => ({
+  shoppingList: one(shoppingLists, {
+    fields: [shoppingListItems.shoppingListId],
+    references: [shoppingLists.id],
+  }),
+
+  product: one(products, {
+    fields: [shoppingListItems.productId],
+    references: [products.id],
+  }),
+}))
 
 export const shoppingListItemInsertSchema = createInsertSchema(
   shoppingListItems,
   {
-    name: schema => schema.min(1),
+    productId: schema => schema.min(1),
     quantity: schema => schema.min(1),
   },
 ).omit({
   id: true,
-  listId: true,
-  userId: true,
+  shoppingListId: true,
   createdAt: true,
-  isCompleted: true,
+  updatedAt: true,
 })
 
-export const shoppingListItemsUpdateSchema = createUpdateSchema(shoppingListItems, { isCompleted: schema => schema }).pick({ isCompleted: true })
+export const shoppingListItemsUpdateSchema = createUpdateSchema(shoppingListItems, { isPurchased: schema => schema }).pick({ isPurchased: true })

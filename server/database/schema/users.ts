@@ -1,5 +1,7 @@
+import { relations } from 'drizzle-orm'
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 import { createInsertSchema } from 'drizzle-zod'
+import { productCategories, products, shoppingLists } from '.'
 
 export const users = sqliteTable('users', {
   id: integer().primaryKey({ autoIncrement: true }),
@@ -8,6 +10,12 @@ export const users = sqliteTable('users', {
   password: text().notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 })
+
+export const usersRelations = relations(users, ({ many }) => ({
+  shoppingLists: many(shoppingLists),
+  categories: many(productCategories),
+  products: many(products),
+}))
 
 export const userInsertSchema = createInsertSchema(
   users,
