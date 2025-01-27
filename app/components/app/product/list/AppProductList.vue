@@ -1,14 +1,11 @@
 <script lang="ts" setup>
-const list = [
-  { icon: 'tabler:a-b', name: 'Pomidor' },
-  { icon: 'tabler:a-b', name: 'Cebula' },
-]
+const shoppingListStore = useShoppingListStore()
 </script>
 
 <template>
-  <SlCard>
+  <SlCard v-if="shoppingListStore.list">
     <div>
-      <AppProductListItem v-for="item in list" :key="item.name" v-bind="item" />
+      <AppProductListItem v-for="item in shoppingListStore.list.products" :key="item.id" :item />
     </div>
   </SlCard>
 </template>
