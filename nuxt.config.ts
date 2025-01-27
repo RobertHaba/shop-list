@@ -1,6 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { useLayers } from 'nuxt-layers-utils'
+
+const layers = useLayers(__dirname, {
+
+  auth: 'layers/shoppingList',
+})
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-19',
+
+  extends: layers.extends(),
 
   devtools: { enabled: true },
 
@@ -79,6 +88,7 @@ export default defineNuxtConfig({
   // DX
   alias: {
     '@app': './app',
+    ...layers.alias(),
   },
 
   lodash: {
