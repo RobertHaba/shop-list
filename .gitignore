@@ -26,3 +26,4 @@ logs
 # Certificates
 *.pem
 
+sqlite.db
