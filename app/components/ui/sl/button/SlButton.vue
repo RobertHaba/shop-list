@@ -1,9 +1,9 @@
-<script lang="ts" setup>
-import type { RouteLocationRaw } from 'vue-router'
+<script lang="ts" setup generic="T extends RoutesNamesList, P extends string">
+import type { NuxtRoute, RoutesNamesList } from '@typed-router'
 import type { CnButtonProps } from '~/components/ui/cn/button/Button.vue'
 
 interface Props extends CnButtonProps {
-  to?: RouteLocationRaw
+  to?: NuxtRoute<T, P>
 }
 
 const { to } = defineProps<Props>()
