@@ -22,7 +22,7 @@ function useStats() {
 </script>
 
 <template>
-  <NuxtLink :to="`/app/products/${item.id}`" class="flex flex-col justify-between gap-2 py-5 border-b border-border">
+  <NuxtLink :to="`/app/shopping-list/${item.id}`" class="flex flex-col justify-between gap-2 py-5 border-b border-border">
     <h3 class="font-semibold">
       {{ item.name }}
     </h3>

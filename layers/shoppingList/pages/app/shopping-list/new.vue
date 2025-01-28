@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { z } from 'zod'
-import { helpers, type NuxtRoute } from '@typed-router'
+import { helpers } from '@typed-router'
 import { shoppingListInsertSchema } from '~~/server/database/schema'
 
 const router = useRouter()
