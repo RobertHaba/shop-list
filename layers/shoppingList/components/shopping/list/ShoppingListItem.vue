@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 type Item = ApiResponse<'/api/shopping-lists', 'get'>['data'][0]
 
 interface Props {
@@ -22,7 +22,7 @@ function useStats() {
 </script>
 
 <template>
-  <NuxtLink :to="`/app/products/${item.id}`" class="flex flex-col justify-between gap-2 p-4 bg-background rounded-lg">
+  <NuxtLink :to="`/app/products/${item.id}`" class="flex flex-col justify-between gap-2 py-5 border-b border-border">
     <h3 class="font-semibold">
       {{ item.name }}
     </h3>

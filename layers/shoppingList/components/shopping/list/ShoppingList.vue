@@ -4,9 +4,9 @@ const { data } = useFetch('/api/shopping-lists')
 
 <template>
   <SlCard :label="$t('shopping.list.title')">
-    <template v-if="data?.data?.length">
+    <div v-if="data?.data?.length">
       <ShoppingListItem v-for="item in data.data" :key="item.id" :item />
-    </template>
+    </div>
 
     <div v-else class="flex flex-col gap-3">
       <p class="text-sm">
