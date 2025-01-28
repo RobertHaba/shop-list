@@ -2,6 +2,6 @@
   <NuxtLayout name="app-container">
     <AppDashboardHeader />
 
-    <AppShoppingList />
+    <ShoppingList />
   </NuxtLayout>
 </template>
