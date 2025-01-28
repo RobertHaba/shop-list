@@ -34,6 +34,10 @@
         "label": "Email",
         "placeholder": "np. {'imie@nazwisko.pl'}"
       },
+      "listName": {
+        "label": "Nazwa listy",
+        "placeholder": "np. Zakupy na weekend"
+      },
       "name": {
         "label": "Imię",
         "placeholder": "np. Jan"
@@ -47,6 +51,7 @@
   "global": {
     "add": "Dodaj",
     "appName": "Shoppini",
+    "create": "Utwórz",
     "createAccount": "Utwórz konto",
     "login": "Zaloguj się",
     "nProducts": "{n} produktów | {n} produkt | {n} produkty | {n} produktów",
