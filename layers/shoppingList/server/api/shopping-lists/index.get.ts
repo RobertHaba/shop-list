@@ -1,4 +1,4 @@
-import { eq, getTableColumns, sql } from 'drizzle-orm'
+import { desc, eq, getTableColumns, sql } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event)
@@ -15,6 +15,7 @@ export default defineEventHandler(async (event) => {
     )
     .from(shoppingLists)
     .where(eq(shoppingLists.userId, user.id))
+    .orderBy(desc(shoppingLists.createdAt))
 
   return {
     success: true,
