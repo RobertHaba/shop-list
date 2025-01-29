@@ -2,8 +2,7 @@
 import { useLayers } from 'nuxt-layers-utils'
 
 const layers = useLayers(__dirname, {
-
-  auth: 'layers/shoppingList',
+  shoppingList: 'layers/shoppingList',
 })
 
 export default defineNuxtConfig({
