@@ -14,7 +14,11 @@ export default defineEventHandler(async (event) => {
     },
     where: and(eq(shoppingLists.id, listId), eq(shoppingLists.userId, user.id)),
     with: {
-      items: true,
+      items: {
+        with: {
+          product: true,
+        },
+      },
     },
   })
 
