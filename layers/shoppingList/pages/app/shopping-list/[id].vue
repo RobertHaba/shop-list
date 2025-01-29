@@ -1,25 +1,14 @@
 <script setup lang="ts">
 const route = useRoute()
-const { t } = useI18n()
 
 const shoppingListStore = useShoppingListStore()
 
 shoppingListStore.getList(String(route.params.id))
-
-const { title } = useListData()
-
-function useListData() {
-  const isNewList = computed(() => route.params.id === 'new')
-
-  const title = computed(() => isNewList.value ? t('app.productList.newList') : shoppingListStore.list?.name)
-
-  return { title }
-}
 </script>
 
 <template>
   <NuxtLayout name="app-container">
-    <AppMobileHeader :title back-to="/app" />
+    <AppMobileHeader :title="shoppingListStore.list?.name" back-to="/app" />
 
     <AppProductList class="h-full" />
 
