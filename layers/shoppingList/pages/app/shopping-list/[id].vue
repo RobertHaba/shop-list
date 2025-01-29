@@ -12,8 +12,6 @@ shoppingListStore.getList(String(route.params.id))
 
     <AppProductList class="h-full" />
 
-    <SlButton class="w-full" size="lg" :to="`/app/products/${$route.params.id}/add`">
-      {{ $t('global.add') }}
-    </SlButton>
+    <ShoppingAddProduct />
   </NuxtLayout>
 </template>
