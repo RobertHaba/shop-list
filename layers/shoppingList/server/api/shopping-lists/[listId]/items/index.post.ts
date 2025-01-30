@@ -1,5 +1,3 @@
-import { shoppingListItemInsertSchema } from '~~/server/database/schema'
-
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event)
 
@@ -9,13 +7,22 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event)
 
-  validator.validateSchema(shoppingListItemInsertSchema, body)
+  validator.validateSchema(tables.shoppingListItemInsertSchema, body)
 
   const [inserted] = await useDrizzle().insert(tables.shoppingListItems).values({
     ...body,
     shoppingListId: numericListId,
     userId: user.id,
   }).returning()
+
+  if (inserted) {
+    return await useDrizzle().query.shoppingListItems.findFirst({
+      where: (items, { eq }) => eq(items.id, inserted.id),
+      with: {
+        product: true,
+      },
+    })
+  }
 
   return inserted
 })
