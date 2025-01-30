@@ -29,13 +29,13 @@ export const shoppingListItemInsertSchema = createInsertSchema(
   shoppingListItems,
   {
     productId: schema => schema.min(1),
-    quantity: schema => schema.min(1),
   },
 ).omit({
   id: true,
   shoppingListId: true,
   createdAt: true,
   updatedAt: true,
+  quantity: true,
 })
 
 export const shoppingListItemsUpdateSchema = createUpdateSchema(shoppingListItems, { isPurchased: schema => schema }).pick({ isPurchased: true })
