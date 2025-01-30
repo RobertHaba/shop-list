@@ -4,6 +4,9 @@
     "list": {
       "empty": "Twoja lista jest pusta. Utwórz nową listę zakupów i przejmij kontrolę nad zakupami!",
       "title": "Twoje listy zakupów"
+    },
+    "product": {
+      "addProductToList": "Dodaj produkt do listy"
     }
   },
   "shoppingList": {
