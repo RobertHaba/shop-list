@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     .where(
       and(
         eq(shoppingListItems.id, numericItemId),
-        eq(shoppingListItems.listId, numericListId),
+        eq(shoppingListItems.shoppingListId, numericListId),
         eq(shoppingListItems.userId, user.id),
       ),
     )
