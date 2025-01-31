@@ -1,4 +1,4 @@
-import { ShoppingIcon } from '.'
+import { ShoppingIcon } from './shoppingIcon'
 
 export const CategoryIcon = {
   fruits: ShoppingIcon.strawberry,
