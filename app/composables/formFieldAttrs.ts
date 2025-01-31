@@ -35,12 +35,13 @@ export function useFormFieldAttrs() {
     label?: string
     placeholder?: string
     hideLabel?: boolean
+    hidePlaceholder?: boolean
   }
 
   const generateFieldTextAttrs = (props: FieldTextAttrs) => {
     return {
       resolvedLabel: computed(() => props.hideLabel ? '' : generateText({ fieldType: 'input', textType: 'label', propValue: props.label, name: props.textKey ?? props.name })),
-      resolvedPlaceholder: computed(() => generateText({ fieldType: 'input', textType: 'placeholder', propValue: props.placeholder, name: props.textKey ?? props.name })),
+      resolvedPlaceholder: computed(() => props.hidePlaceholder ? '' : generateText({ fieldType: 'input', textType: 'placeholder', propValue: props.placeholder, name: props.textKey ?? props.name })),
     }
   }
 
