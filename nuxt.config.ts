@@ -34,6 +34,7 @@ export default defineNuxtConfig({
     '@formkit/auto-animate',
     '@vueuse/nuxt',
     'nuxt-typed-router',
+    '@nuxt/image',
   ],
 
   runtimeConfig: {
