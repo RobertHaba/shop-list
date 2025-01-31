@@ -4,8 +4,6 @@ const shoppingListStore = useShoppingListStore()
 
 <template>
   <SlCard v-if="shoppingListStore.list">
-    <div>
-      <AppProductListItem v-for="item in shoppingListStore.list.products" :key="item.id" :item />
-    </div>
+    <ShoppingPreviewListItem v-for="item in shoppingListStore.list.items" :key="item.id" :item />
   </SlCard>
 </template>

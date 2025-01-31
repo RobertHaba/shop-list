@@ -10,7 +10,11 @@ useForm({ validationSchema: toTypedSchema(z.object({ search: z.string().optional
 
 <template>
   <CnDrawer>
-    <CnDrawerTrigger>Open</CnDrawerTrigger>
+    <CnDrawerTrigger>
+      <SlButton icon="tabler:plus">
+        {{ $t('shopping.preview.addProduct') }}
+      </SlButton>
+    </CnDrawerTrigger>
 
     <CnDrawerContent>
       <div class="mx-auto w-full flex flex-col gap-2 py-6 max-w-lg">
