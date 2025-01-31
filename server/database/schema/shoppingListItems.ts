@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm'
 import { integer, sqliteTable } from 'drizzle-orm/sqlite-core'
 import { createInsertSchema, createUpdateSchema } from 'drizzle-zod'
-import { products, shoppingLists } from '.'
+import { products, shoppingLists, users } from '.'
 
 export const shoppingListItems = sqliteTable('shopping_list_items', {
   id: integer().primaryKey({ autoIncrement: true }),
@@ -9,6 +9,7 @@ export const shoppingListItems = sqliteTable('shopping_list_items', {
   productId: integer('product_id').notNull().references(() => products.id),
   quantity: integer().notNull().default(1),
   isPurchased: integer('is_purchased', { mode: 'boolean' }).notNull().default(false),
+  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
   updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 })
@@ -35,7 +36,14 @@ export const shoppingListItemInsertSchema = createInsertSchema(
   shoppingListId: true,
   createdAt: true,
   updatedAt: true,
+  userId: true,
   quantity: true,
 })
 
-export const shoppingListItemsUpdateSchema = createUpdateSchema(shoppingListItems, { isPurchased: schema => schema }).pick({ isPurchased: true })
+export const shoppingListItemsUpdateSchema = createUpdateSchema(
+  shoppingListItems,
+  {
+    isPurchased: schema => schema.optional(),
+    quantity: schema => schema.min(1).optional(),
+  },
+).pick({ isPurchased: true, quantity: true })
