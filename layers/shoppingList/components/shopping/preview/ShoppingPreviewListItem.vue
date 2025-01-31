@@ -17,8 +17,6 @@ const { isSwiping } = useSwipe(itemRef)
 
 const { toggleChecked } = useItemActions()
 
-const resolvedIcon = computed(() => 'tabler:cactus')
-
 function useItemActions() {
   async function toggleChecked() {
     await shoppingListStore.updateItem(Number(route.params.id), item.id, {
@@ -34,13 +32,13 @@ function useItemActions() {
 
 <template>
   <div ref="itemRef" class="border-b flex justify-between border-border items-center min-h-14" :class="{ 'bg-muted': isSwiping }">
-    <div class="flex gap-4 items-center">
+    <div class="flex gap-3 items-center">
       <CnCheckbox :checked="item.isPurchased" class="size-6 rounded-full" @update:checked="toggleChecked" />
 
       <div class="flex gap-2 items-center">
-        <SlIcon :name="resolvedIcon" />
+        <ShoppingCategoryIcon :icon="item.product.category.icon" />
 
-        <h3 class="text-sm">
+        <h3 class="text-sm font-semibold">
           {{ item.product.name }}
         </h3>
       </div>
