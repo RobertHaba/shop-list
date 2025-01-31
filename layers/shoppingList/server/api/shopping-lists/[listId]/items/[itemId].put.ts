@@ -1,5 +1,4 @@
 import { and, eq } from 'drizzle-orm'
-import { shoppingListItems, shoppingListItemsUpdateSchema } from '~~/server/database/schema'
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event)
@@ -11,16 +10,25 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody(event)
 
-  validator.validateSchema(shoppingListItemsUpdateSchema, body)
+  validator.validateSchema(tables.shoppingListItemsUpdateSchema, body)
+
+  const setData: Record<string, any> = {}
+
+  if (body.isPurchased === true) {
+    setData.isPurchased = true
+  }
+  if (body.quantity >= 0) {
+    setData.quantity = body.quantity
+  }
 
   const [updated] = await useDrizzle()
-    .update(shoppingListItems)
-    .set(body)
+    .update(tables.shoppingListItems)
+    .set(setData)
     .where(
       and(
-        eq(shoppingListItems.id, numericItemId),
-        eq(shoppingListItems.shoppingListId, numericListId),
-        eq(shoppingListItems.userId, user.id),
+        eq(tables.shoppingListItems.id, numericItemId),
+        eq(tables.shoppingListItems.shoppingListId, numericListId),
+        eq(tables.shoppingListItems.userId, user.id),
       ),
     )
     .returning()
