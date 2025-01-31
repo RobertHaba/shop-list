@@ -8,6 +8,7 @@ interface SlInputProps {
   label?: string
   placeholder?: string
   hideLabel?: boolean
+  hidePlaceholder?: boolean
   required?: boolean
   description?: string
   iconPrepend?: string
