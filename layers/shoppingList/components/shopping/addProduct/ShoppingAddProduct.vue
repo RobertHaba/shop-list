@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { z } from 'zod'
+
 const productListStore = useProductListStore()
 
 productListStore.getProductList()
+
+useForm({ validationSchema: toTypedSchema(z.object({ search: z.string().optional() })) })
 </script>
 
 <template>
@@ -15,7 +19,7 @@ productListStore.getProductList()
             {{ $t('shopping.product.addProductToList') }}
           </CnDrawerTitle>
 
-          <SlInput name="search" icon-prepend="tabler:search" type="search" />
+          <SlInput name="search" icon-prepend="tabler:search" hide-label type="search" />
         </CnDrawerHeader>
 
         <div class="px-4">
