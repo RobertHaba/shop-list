@@ -16,7 +16,11 @@ export default defineEventHandler(async (event) => {
     with: {
       items: {
         with: {
-          product: true,
+          product: {
+            with: {
+              category: true,
+            },
+          },
         },
       },
     },
