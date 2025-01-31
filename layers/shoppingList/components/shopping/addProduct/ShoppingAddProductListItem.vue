@@ -12,7 +12,7 @@ const { product } = defineProps<Props>()
 const shoppingListStore = useShoppingListStore()
 const route = useRoute()
 
-const { handleAddProduct, values, isAdded, showDelete } = useProduct()
+const { handleAddProduct, isAdded, showDelete } = useProduct()
 
 const icon = computed(() => isAdded.value ? 'tabler:check' : 'tabler:plus')
 
@@ -100,7 +100,7 @@ function useProduct() {
       </h3>
     </div>
 
-    <SlInputNumber v-if="isAdded" class-input="w-24" name="quantity">
+    <SlInputNumber v-if="isAdded" class-input="w-24" name="quantity" hide-label hide-placeholder>
       <template #decrement>
         <SlIcon v-if="showDelete" name="tabler:trash" class="size-4" />
       </template>
