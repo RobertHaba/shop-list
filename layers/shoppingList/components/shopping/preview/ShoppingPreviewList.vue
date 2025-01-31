@@ -3,13 +3,17 @@ const shoppingListStore = useShoppingListStore()
 </script>
 
 <template>
-  <SlCard v-if="shoppingListStore.list" class="h-full">
-    <div class="flex-1">
-      <ShoppingPreviewListItem v-for="item in shoppingListStore.list.items" :key="item.id" :item />
-    </div>
+  <div v-if="shoppingListStore.list" class="flex flex-col justify-end h-full">
+    <SlCard>
+      <div class="flex-1">
+        <ShoppingPreviewListEmpty v-if="!shoppingListStore.list.items.length" />
 
-    <template #footer>
-      <ShoppingAddProduct />
-    </template>
-  </SlCard>
+        <ShoppingPreviewListItem v-for="item in shoppingListStore.list.items" :key="item.id" :item />
+      </div>
+
+      <template #footer>
+        <ShoppingAddProduct />
+      </template>
+    </SlCard>
+  </div>
 </template>
