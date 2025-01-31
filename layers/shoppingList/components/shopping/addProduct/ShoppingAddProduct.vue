@@ -10,8 +10,8 @@ useForm({ validationSchema: toTypedSchema(z.object({ search: z.string().optional
 
 <template>
   <CnDrawer>
-    <CnDrawerTrigger>
-      <SlButton icon="tabler:plus">
+    <CnDrawerTrigger as-child>
+      <SlButton icon="tabler:plus" class="w-full">
         {{ $t('shopping.preview.addProduct') }}
       </SlButton>
     </CnDrawerTrigger>
