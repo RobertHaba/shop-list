@@ -10,8 +10,6 @@ shoppingListStore.getList(String(route.params.id))
   <NuxtLayout name="app-container">
     <AppMobileHeader :title="shoppingListStore.list?.name" back-to="/app" />
 
-    <AppProductList class="h-full" />
-
-    <ShoppingAddProduct />
+    <ShoppingPreviewList />
   </NuxtLayout>
 </template>
