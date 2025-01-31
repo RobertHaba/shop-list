@@ -14,9 +14,10 @@ export default defineEventHandler(async (event) => {
 
   const setData: Record<string, any> = {}
 
-  if (body.isPurchased === true) {
-    setData.isPurchased = true
+  if ('isPurchased' in body) {
+    setData.isPurchased = body.isPurchased
   }
+
   if (body.quantity >= 0) {
     setData.quantity = body.quantity
   }
