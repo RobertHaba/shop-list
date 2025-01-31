@@ -26,5 +26,38 @@ export const useShoppingListStore = defineStore('shoppingList', () => {
     return response
   }
 
-  return { getList, list, addItem }
+  async function updateItem(listId: number, itemId: number, body: Record<string, any>) {
+    const response = await $fetch(`/api/shopping-lists/${listId}/items/${itemId}`, {
+      method: 'put',
+      body,
+    })
+
+    if (response && list.value) {
+      const item = list.value.items.find(item => item.id === itemId)
+
+      if (item) {
+        Object.assign(item, response)
+      }
+    }
+
+    return response
+  }
+
+  async function deleteItem(listId: number, itemId: number) {
+    const response = await $fetch(`/api/shopping-lists/${listId}/items/${itemId}`, {
+      method: 'delete',
+    })
+
+    if (response && list.value) {
+      const index = list.value.items.findIndex(item => item.id === itemId)
+
+      if (index > -1) {
+        list.value.items.splice(index, 1)
+      }
+    }
+
+    return response
+  }
+
+  return { getList, list, addItem, updateItem, deleteItem }
 })
