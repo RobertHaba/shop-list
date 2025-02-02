@@ -92,7 +92,7 @@ function useProduct() {
 
 <template>
   <div class="flex gap-3 items-center min-h-10">
-    <SlButton size="icon" :icon variant="secondary" @click="handleAddProduct" />
+    <SlButton size="icon" :icon variant="secondary" :class="{ 'bg-success/20 hover:bg-success/40': isAdded }" @click="handleAddProduct" />
 
     <div class="flex gap-2 items-center grow">
       <h3 class="text-sm">
