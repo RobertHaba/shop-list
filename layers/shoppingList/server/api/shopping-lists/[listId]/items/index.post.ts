@@ -19,7 +19,11 @@ export default defineEventHandler(async (event) => {
     return await useDrizzle().query.shoppingListItems.findFirst({
       where: (items, { eq }) => eq(items.id, inserted.id),
       with: {
-        product: true,
+        product: {
+          with: {
+            category: true,
+          },
+        },
       },
     })
   }
