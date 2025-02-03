@@ -22,6 +22,14 @@ export default defineEventHandler(async (event) => {
     setData.quantity = body.quantity
   }
 
+  if (body.name) {
+    setData.name = body.name
+  }
+
+  if (body.categoryId) {
+    setData.categoryId = body.categoryId
+  }
+
   const [updated] = await useDrizzle()
     .update(tables.shoppingListItems)
     .set(setData)

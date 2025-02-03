@@ -13,10 +13,10 @@ export const useShoppingListStore = defineStore('shoppingList', () => {
     list.value = data.value
   }
 
-  async function addItem(listId: RouteParamValue, productId: number) {
+  async function addItem(listId: RouteParamValue, { productId, name, categoryId }: { productId: number, name: string, categoryId: number }) {
     const response = await $fetch(`/api/shopping-lists/${listId}/items`, {
       method: 'post',
-      body: { productId },
+      body: { productId, name, categoryId },
     })
 
     if (response && list.value) {

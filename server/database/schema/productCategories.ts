@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm'
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
-import { products, users } from '.'
+import { products, shoppingListItems, users } from '.'
 
 export const productCategories = sqliteTable('product_categories', {
   id: integer().primaryKey({ autoIncrement: true }),
@@ -19,4 +19,6 @@ export const productCategoriesRelations = relations(productCategories, ({ one, m
   }),
 
   products: many(products),
+
+  listItems: many(shoppingListItems),
 }))
