@@ -31,21 +31,25 @@ function useItemActions() {
 </script>
 
 <template>
-  <div ref="itemRef" class="border-b flex justify-between border-border items-center min-h-14" :class="{ 'bg-muted': isSwiping }">
-    <div class="flex gap-3 items-center">
-      <CnCheckbox :checked="item.isPurchased" class="size-6 rounded-full" @update:checked="toggleChecked" />
+  <ShoppingPreviewListItemEdit>
+    <template #trigger>
+      <div ref="itemRef" class="border-b flex justify-between border-border items-center min-h-14" :class="{ 'bg-muted': isSwiping }">
+        <div class="flex gap-3 items-center">
+          <CnCheckbox :checked="item.isPurchased" class="size-6 rounded-full" @click.stop @update:checked="toggleChecked" />
 
-      <div class="flex gap-2 items-center">
-        <ShoppingCategoryIcon :icon="item.product.category.icon" />
+          <div class="flex gap-2 items-center">
+            <ShoppingCategoryIcon :icon="item.category.icon" />
 
-        <h3 class="text-sm font-semibold">
-          {{ item.product.name }}
-        </h3>
+            <h3 class="text-sm font-semibold">
+              {{ item.name }}
+            </h3>
+          </div>
+        </div>
+
+        <CnBadge class="bg-muted text-muted-foreground">
+          {{ item.quantity }}
+        </CnBadge>
       </div>
-    </div>
-
-    <CnBadge class="bg-muted text-muted-foreground">
-      {{ item.quantity }}
-    </CnBadge>
-  </div>
+    </template>
+  </ShoppingPreviewListItemEdit>
 </template>
