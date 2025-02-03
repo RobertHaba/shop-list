@@ -36,7 +36,10 @@ function useProduct() {
 
       return
     }
-    await shoppingListStore.addItem(String(route.params.id), product.id)
+
+    const { id: productId, categoryId, name } = product
+
+    await shoppingListStore.addItem(String(route.params.id), { productId, categoryId, name })
     setFieldValue('quantity', 1)
   }
 
