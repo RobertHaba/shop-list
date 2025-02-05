@@ -45,6 +45,14 @@
       "password": {
         "label": "Hasło",
         "placeholder": "******"
+      },
+      "productName": {
+        "label": "Nazwa produktu",
+        "placeholder": "np. Mleko"
+      },
+      "search": {
+        "label": "Szukaj",
+        "placeholder": "Czego szukasz?"
       }
     }
   },
@@ -53,6 +61,7 @@
     "appName": "Shoppini",
     "create": "Utwórz",
     "createAccount": "Utwórz konto",
+    "edit": "Edytuj",
     "login": "Zaloguj się",
     "nProducts": "{n} produktów | {n} produkt | {n} produkty | {n} produktów",
     "save": "Zapisz"

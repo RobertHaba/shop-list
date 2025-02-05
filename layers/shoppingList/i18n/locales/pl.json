@@ -5,6 +5,11 @@
       "empty": "Twoja lista jest pusta. Utwórz nową listę zakupów i przejmij kontrolę nad zakupami!",
       "title": "Twoje listy zakupów"
     },
+    "preview": {
+      "addProduct": "Dodaj produkty",
+      "emptyList": "Spokojnie, to tylko chwilowa pustka. Dodaj produkty i plan gotowy!",
+      "emptyListTitle": "Pusta lista"
+    },
     "product": {
       "addProductToList": "Dodaj produkt do listy"
     }
