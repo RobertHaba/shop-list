@@ -13,6 +13,7 @@ interface SlInputProps {
   description?: string
   iconPrepend?: string
   classInput?: HTMLAttributes['class']
+  class?: HTMLAttributes['class']
 }
 
 const props = defineProps<SlInputProps>()
@@ -24,7 +25,7 @@ const { resolvedLabel, resolvedPlaceholder } = generateFieldTextAttrs(props)
 
 <template>
   <CnFormField v-slot="{ componentField }" :name>
-    <CnFormItem>
+    <CnFormItem :class="$props.class">
       <CnFormLabel v-if="resolvedLabel">
         {{ resolvedLabel }}
       </CnFormLabel>
