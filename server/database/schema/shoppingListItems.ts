@@ -55,4 +55,4 @@ export const shoppingListItemsUpdateSchema = createUpdateSchema(
     name: schema => schema.min(2).optional(),
     categoryId: schema => schema.min(1).optional(),
   },
-).pick({ isPurchased: true, quantity: true })
+).pick({ isPurchased: true, quantity: true, name: true, categoryId: true })
