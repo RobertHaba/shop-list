@@ -31,7 +31,7 @@ function useItemActions() {
 </script>
 
 <template>
-  <ShoppingPreviewListItemEdit>
+  <ShoppingPreviewListItemEdit :item>
     <template #trigger>
       <div ref="itemRef" class="border-b flex justify-between border-border items-center min-h-14" :class="{ 'bg-muted': isSwiping }">
         <div class="flex gap-3 items-center">
